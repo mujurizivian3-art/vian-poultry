@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vian & Family Poultry | Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #fef9e8;
+      color: #2c2b28;
+      line-height: 1.5;
+    }
+
+    /* Navigation / Page Header */
+    .page-header {
+      background: #2f6b2f;
+      background-image: linear-gradient(135deg, #1f4f1f, #2f6b2f);
+      color: white;
+      padding: 1rem 2rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    }
+
+    .logo-area h1 {
+      font-size: 1.9rem;
+      letter-spacing: -0.5px;
+      font-weight: 700;
+    }
+
+    .logo-area p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      font-style: italic;
+    }
+
+    .nav-links {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 0.8rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 40px;
+      transition: all 0.2s ease;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      background: #ffb347;
+      color: #2c2b28;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Main container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 2rem 3rem;
+    }
+
+    /* Page sections (each "page" is a card style but distinct) */
+    .page-card {
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      padding: 2rem 2rem 2.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.2s;
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2f6b2f;
+      border-left: 7px solid #ffb347;
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-sub {
+      font-size: 1.2rem;
+      color: #5a5a55;
+      margin-bottom: 2rem;
+    }
+
+    /* Grid for services & businesses */
+    .services-grid, .business-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .service-card, .business-card {
+      background: #fef7e8;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+      border: 1px solid #f3e5c9;
+    }
+
+    .service-card:hover, .business-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 24px -8px rgba(0,0,0,0.12);
+      border-color: #ffd89a;
+    }
+
+    .service-icon, .business-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .service-card h3, .business-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2f6b2f;
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card p, .business-card p {
+      color: #4b4b44;
+    }
+
+    /* Contact section */
+    .contact-blocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+      background: #fef3e0;
+      border-radius: 1.6rem;
+      padding: 1.8rem;
+    }
+
+    .contact-info {
+      flex: 2;
+    }
+
+    .contact-detail {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-detail span:first-child {
+      font-weight: 700;
+      min-width: 80px;
+      color: #2f6b2f;
+    }
+
+    .contact-detail a {
+      color: #2c2b28;
+      text-decoration: none;
+      border-bottom: 1px solid #ffb347;
+    }
+
+    .contact-detail a:hover {
+      color: #b45f1b;
+    }
+
+    .social-links {
+      flex: 1;
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .social-links h4 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #2f6b2f;
+    }
+
+    .social-links p {
+      margin: 0.5rem 0;
+    }
+
+    /* Footer */
+    .footer-note {
+      text-align: center;
+      border-top: 2px dashed #e7dbbc;
+      padding-top: 2rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #716e64;
+    }
+
+    /* active page highlight via JS but also backup style */
+    .hidden-page {
+      display: none;
+    }
+
+    button, a {
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        padding: 1rem;
+      }
+      .page-title {
+        font-size: 1.8rem;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+    }
+
+    .btn-outline {
+      background: #ffb34720;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    .highlight {
+      background: #fdebd0;
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="logo-area">
+    <h1>🐔 VIAN & FAMILY POULTRY</h1>
+    <p>Healthy birds, happy families — since 2005</p>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#" data-page="home" class="active">🏠 Home</a>
+    <a href="#" data-page="about">📖 About Us</a>
+    <a href="#" data-page="services">⚙️ Services Offered</a>
+    <a href="#" data-page="business">🏪 Our Other Businesses</a>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HOME PAGE -->
+  <div id="home-page" class="page-card">
+    <div class="page-title">Welcome to Vian & Family Poultry</div>
+    <div class="section-sub">Your trusted partner in premium poultry products & services.</div>
+    <p style="font-size:1.15rem; margin-bottom:1.2rem;">🐣 We are a family-run poultry farm dedicated to quality, sustainability, and healthy livestock. From day-old chicks to organic eggs and farm-fresh meat — we deliver excellence at every step.</p>
+    <div style="background:#eef4e6; padding:1.2rem; border-radius: 1.2rem; margin:1.5rem 0;">
+      <span style="font-weight:700;">🌟 Why choose us?</span>
+      <ul style="margin-top:0.6rem; margin-left:1.5rem;">
+        <li>✔️ Vaccinated & well-nourished birds</li>
+        <li>✔️ Farm-to-table freshness guaranteed</li>
+        <li>✔️ Competitive pricing & free delivery on bulk orders</li>
+        <li>✔️ 24/7 veterinary advisory for our clients</li>
+      </ul>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+      <div><strong>📞 Call us:</strong> <a href="tel:+256764927229" style="color:#2f6b2f;">+256 7474141375</a> &nbsp;|&nbsp; <strong>✉️ Email:</strong> <a href="mailto:info@vianpoultry.com" style="color:#2f6b2f;">info@vianpoultry.com</a></div>
+      <div><span style="background:#ffb347; padding:0.4rem 1.2rem; border-radius: 30px; font-weight:600;">🐓 Open Mon-Sat: 8AM - 6PM</span></div>
+    </div>
+  </div>
+
+  <!-- ABOUT US PAGE -->
+  <div id="about-page" class="page-card hidden-page">
+    <div class="page-title">📖 About Vian & Family Poultry</div>
+    <div class="section-sub">Rooted in tradition, growing with innovation.</div>
+    <p>Vian & Family Poultry started as a small backyard farm in 2005, founded by Vianney Mukasa and his family with just 50 chickens. Today, we are proud to be one of the most trusted poultry enterprises in the region, known for ethical farming and superior bird genetics.</p>
+    <br>
+    <p>Our mission is to empower local farmers and households with affordable, high-quality poultry products while maintaining animal welfare. We rear layers, broilers, kienyeji (indigenous), and also provide hatchery services. Our family values transparency, integrity, and sustainability — every bird is raised without unnecessary antibiotics, and our feed is locally sourced.</p>
+    <div style="display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 2rem 0 1rem;">
+      <div style="background:#fef1df; border-radius: 1rem; padding: 1rem; flex:1; text-align:center;"><span style="font-weight:800; font-size:2rem;">15+</span><br>Years experience</div>
+      <div style="background:#fef1df; border-radius: 1rem; padding: 1rem; flex:1; text-align:center;"><span style="font-weight:800; font-size:2rem;">10K+</span><br>Happy customers</div>
+      <div style="background:#fef1df; border-radius: 1rem; padding: 1rem; flex:1; text-align:center;"><span style="font-weight:800; font-size:2rem;">8</span><br>Regions covered</div>
+    </div>
+    <p>We are passionate about supporting smallholder farmers through training and affordable chick starter programs. Vian & Family Poultry — where quality meets compassion. 🤝</p>
+  </div>
+
+  <!-- SERVICES OFFERED PAGE -->
+  <div id="services-page" class="page-card hidden-page">
+    <div class="page-title">⚙️ Our Poultry Services</div>
+    <div class="section-sub">Everything you need under one wing 🐔</div>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🥚</div><h3>Day-Old Chicks</h3><p>High-breed layer & broiler chicks, vaccinated & sexed. Available in batches of 50+.</p></div>
+      <div class="service-card"><div class="service-icon">🍗</div><h3>Table Eggs & Meat</h3><p>Fresh organic eggs, frozen or fresh dressed chicken. Farm pickup or delivery.</p></div>
+      <div class="service-card"><div class="service-icon">🏥</div><h3>Vet & Vaccination</h3><p>On-farm poultry health checks, vaccination campaigns, and disease prevention advice.</p></div>
+      <div class="service-card"><div class="service-icon">🏭</div><h3>Feed & Supplements</h3><p>Premium layer mash, broiler starter, and natural supplements for optimum growth.</p></div>
+      <div class="service-card"><div class="service-icon">📘</div><h3>Farm Training</h3><p>Workshops & seminars for backyard and commercial farmers (monthly sessions).</p></div>
+      <div class="service-card"><div class="service-icon">🚚</div><h3>Bulk Delivery</h3><p>Fast & reliable logistics for orders above 100 birds or 200kg of feed.</p></div>
+    </div>
+    <p style="margin-top:1rem; padding:0.8rem; background:#fef1e0; border-radius:1rem;"><strong>📌 Special service:</strong> Free farm consultation for first-time poultry farmers! Book your slot today.</p>
+  </div>
+
+  <!-- OUR OTHER BUSINESSES PAGE -->
+  <div id="business-page" class="page-card hidden-page">
+    <div class="page-title">🏪 Other Ventures of Vian Family</div>
+    <div class="section-sub">Beyond poultry — diversified enterprises for community growth.</div>
+    <div class="business-grid">
+      <div class="business-card"><div class="business-icon">🌾</div><h3>Vian Agro Supplies</h3><p>Quality seeds, fertilizers, and farm tools. One-stop shop for smallholder farmers.</p></div>
+      <div class="business-card"><div class="business-icon">🐄</div><h3>Vian Dairy & Livestock</h3><p>Fresh milk, yogurt, and free-range goat meat. Dairy training also available.</p></div>
+      <div class="business-card"><div class="business-icon">🍅</div><h3>Greenhouse Veggies</h3><p>Organic tomatoes, bell peppers, and herbs supplied to local markets & hotels.</p></div>
+      <div class="business-card"><div class="business-icon">🍞</div><h3>Family Bakes & Snacks</h3><p>Home-style bakery supplying events: bread, cookies, and egg-based pastries.</p></div>
+      <div class="business-card"><div class="business-icon">📦</div><h3>Logistics & Cold Chain</h3><p>Refrigerated transport for perishables — serving 5 major cities.</p></div>
+      <div class="business-card"><div class="business-icon">💚</div><h3>Eco-Fertilizer Unit</h3><p>Converting poultry litter into organic compost for sustainable farming.</p></div>
+    </div>
+    <div style="margin-top: 2rem; background: #ebf2e1; border-radius: 1rem; padding: 1rem;">
+      <span style="font-weight:700;">✨ Collaboration opportunities:</span> We partner with restaurants, cooperatives, and schools. Contact us for bulk deals and cross-business packages.
+    </div>
+  </div>
+
+  <!-- CONTACT SECTION - appears on all pages (shared) -->
+  <div class="contact-blocks">
+    <div class="contact-info">
+      <h3 style="color:#2f6b2f; margin-bottom: 0.5rem;">📞 Get in touch</h3>
+      <div class="contact-detail"><span>📍 Address:</span> Plot 124, Poultry Lane, Kampala, Uganda</div>
+      <div class="contact-detail"><span>📞 Phone:</span> <a href="tel:+256700123456">+256 700 123 456</a> / <a href="tel:+256775987654">+256 775 987 654</a></div>
+      <div class="contact-detail"><span>✉️ Email:</span> <a href="mailto:hello@vianpoultry.com">hello@vianpoultry.com</a></div>
+      <div class="contact-detail"><span>🕒 Hours:</span> Mon-Sat: 8:00 AM – 6:00 PM | Sun: Closed</div>
+    </div>
+    <div class="social-links">
+      <h4>🌐 Follow our story</h4>
+      <p>📘 Facebook: <strong>/vianfamilypoultry</strong></p>
+      <p>📸 Instagram: <strong>@vian_poultry</strong></p>
+      <p>🐦 Twitter: <strong>@vianfamily</strong></p>
+      <p>💬 WhatsApp: <strong>+256 700 123 456</strong> (Click to chat)</p>
+    </div>
+  </div>
+  <div class="footer-note">
+    <p>© 2025 Vian & Family Enterprises — rooted in family, raising the standard. 🐓 All rights reserved.</p>
+  </div>
+</main>
+
+<script>
+  // Simulated multi-page "routing" with showing/hiding content, plus active link
+  const pages = {
+    home: document.getElementById('home-page'),
+    about: document.getElementById('about-page'),
+    services: document.getElementById('services-page'),
+    business: document.getElementById('business-page')
+  };
+
+  // get all nav links
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  function showPage(pageId) {
+    // Hide all page cards
+    Object.values(pages).forEach(page => {
+      if (page) page.classList.add('hidden-page');
+    });
+    // Show selected page
+    if (pages[pageId]) {
+      pages[pageId].classList.remove('hidden-page');
+    }
+    // Update active class on nav links
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute('data-page');
+      if (linkPage === pageId) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+    // Optional: scroll gently to top when switching pages
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // attach click event to each nav link
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const pageId = link.getAttribute('data-page');
+      if (pageId && pages[pageId]) {
+        showPage(pageId);
+        // Also update URL hash to support back/forward (optional deep linking)
+        window.location.hash = pageId;
+      }
+    });
+  });
+
+  // Handle initial load & hash navigation
+  function handleHashChange() {
+    let hash = window.location.hash.substring(1); // remove #
+    if (hash && pages[hash]) {
+      showPage(hash);
+    } else {
+      // default home
+      showPage('home');
+    }
+  }
+
+  window.addEventListener('hashchange', handleHashChange);
+  // initial launch: if hash exists use hash else home
+  if (window.location.hash && window.location.hash.substring(1) && pages[window.location.hash.substring(1)]) {
+    handleHashChange();
+  } else {
+    showPage('home');
+    // set clean hash if needed
+    if (!window.location.hash) window.location.hash = 'home';
+  }
+
+  // additional: prevent any anchor default but keep our internal navigation smooth
+  // also optional: style click on contact emails etc remain functional
+</script>
+</body>
+</html>
